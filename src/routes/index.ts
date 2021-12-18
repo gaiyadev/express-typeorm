@@ -1,10 +1,11 @@
 import * as express from "express";
-import {Request, Response} from "express";
-import  { signIn } from '../controllers/user.controller'
+import  { UserService } from '../services/user.service'
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", signIn);
+
+const obj = new UserService();
+router.get("/", obj.signIn);
 
 
 module.exports = router;

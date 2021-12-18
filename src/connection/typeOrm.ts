@@ -1,5 +1,6 @@
 import {createConnection, Connection} from "typeorm";
-import  { User } from '../entity/user'
+import {User} from "../entity/user";
+import {UserRepository} from "../repository/userRepository";
 
 const connection = async ()  => <Connection> await createConnection({
     type: "postgres",
