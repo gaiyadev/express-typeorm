@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 require('./connection/typeOrm')
 
 const indexRouter = require("./routes/index");
+
 // create and setup express app
 const app = express();
 app.use(express.json());
@@ -12,6 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // register routes
 app.use("/", indexRouter);
+
+
 
 
 // start express server

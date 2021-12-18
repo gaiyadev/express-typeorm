@@ -1,7 +1,6 @@
 import {Request, Response} from "express";
 import {UserRepository} from "../repository/userRepository";
-import {getConnection, getRepository, Repository} from "typeorm";
-import {SignInInterface} from "../interface/signin.interface";
+import {SignInDto} from "../dto/signin.dto";
 
 
 export class UserService{
@@ -11,11 +10,12 @@ export class UserService{
     }
 
     public signIn = async (req: Request, res:Response) => {
-         const body: SignInInterface = req['body'];
-       const d  = await this.userRepository.signIn(body)
-        const g = JSON.stringify(d);
+         const signInDto: SignInDto = req['body'];
+         const user = await this.userRepository.signIn(signInDto)
+
         return res.json({
-            d
+            message: "account created",
+            user
         })
     }
 }
