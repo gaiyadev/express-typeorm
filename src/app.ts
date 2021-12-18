@@ -1,15 +1,14 @@
 import * as express from "express";
-import {Request, Response} from "express";
 
+const indexRouter = require("./routes/index");
 // create and setup express app
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 
 // register routes
-
-app.get("/", function(req: Request, res: Response) {
-    res.json({message: 'welcome to docker crash course'})
-});
+app.use("/", indexRouter);
 
 
 // start express server
