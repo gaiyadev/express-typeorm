@@ -1,5 +1,5 @@
 import {createConnection, Connection} from "typeorm";
-import  { UserRepository } from '../repository/userRepository'
+import  { User } from '../entity/user'
 
 const connection = async ()  => <Connection> await createConnection({
     type: "postgres",
@@ -11,7 +11,7 @@ const connection = async ()  => <Connection> await createConnection({
     synchronize: true,
     logging: false,
     entities:[
-        UserRepository
+        User
     ]
 });
 

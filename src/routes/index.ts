@@ -1,11 +1,10 @@
 import * as express from "express";
 import {Request, Response} from "express";
+import  { signIn } from '../controllers/user.controller'
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", function(req: Request, res: Response) {
-    res.json({message: 'welcome to docker crash course'})
-});
+router.get("/", signIn);
 
 
 module.exports = router;
