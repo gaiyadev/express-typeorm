@@ -1,18 +1,17 @@
 import {createConnection, Connection} from "typeorm";
-import {User} from "../entity/user";
-import {UserRepository} from "../repository/userRepository";
+import {User} from "../user/entity/user.entity";
 
 const connection = async ()  => <Connection> await createConnection({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
+    host: process.env["DATABASE_HOST "],
+    port: +process.env["DATABASE_HOST "],
     username: "postgres",
     password: "mathias",
-    database: "express-typeorm",
+    database: process.env["DATABASE "],
     synchronize: true,
     logging: false,
     entities:[
-        User
+        User,
     ]
 });
 
