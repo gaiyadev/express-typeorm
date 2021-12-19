@@ -1,7 +1,5 @@
 FROM node:16.13.1
 
-FROM postgres
-
 WORKDIR  /app
 
 COPY package.json /app
