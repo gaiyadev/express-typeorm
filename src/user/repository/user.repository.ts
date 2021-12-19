@@ -7,8 +7,8 @@ export class UserRepository extends Repository<User>{
 
     /**
      *  create a user
-     * */
-    public signIn = async (signInDto:SignInDto) => {
+     **/
+    public signIn = async (signInDto: SignInDto) => {
         const {email, username, password, name} = signInDto;
 
         const user = new User();
@@ -25,10 +25,10 @@ export class UserRepository extends Repository<User>{
     }
 /**
  *  Fetch all users
- * */
+ **/
     public fetchAll = async () =>  {
        return await User.find();
-  }
+    }
 
     /**
      *  Fetch one user
@@ -37,17 +37,15 @@ export class UserRepository extends Repository<User>{
         return await User.findOne(id);
     }
 
-
     /**
      *  Fetch one user
-     * */
+     **/
     public removeOne = async (id: number) =>  {
         return await User.delete(id)
     }
 
-    public updateOne = async (signInDto:SignInDto, id: number) => {
+    public updateOne = async (signInDto: SignInDto, id: number) => {
         const {email, username, password, name} = signInDto;
-
         const user = await this.fetchOne(id);
         if(!user) {
              return;

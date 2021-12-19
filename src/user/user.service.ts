@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {UserRepository} from "./repository/user.repository";
 import {SignInDto} from "./dto/signin.dto";
-import {NotFound} from "../status-code/status";
+import {Created, NotFound} from "../status-code/status";
 
 export class UserService{
     private readonly  userRepository = new UserRepository();
@@ -13,22 +13,22 @@ export class UserService{
          const signInDto: SignInDto = req['body'];
          const user = await this.userRepository.signIn(signInDto)
 
-        return res.json({
-            message: "account created successfully",
+        return res.status(Created).json({
+            message: "Account created successfully",
             user
         })
     }
 
     public fetchAll = async (req: Request, res:Response) => {
         const users = await this.userRepository.fetchAll();
-        return res.json({users: users, message: 'User fetch successfully'})
+        return res.json({users: users, message: 'User fetched successfully'})
     }
 
     public fetchOne = async (req: Request, res:Response) => {
         const { id } = req.params;
         const user = await this.userRepository.fetchOne(+id);
         if(user) {
-            return res.json({users: user, message: 'User fetch successfully'})
+            return res.json({users: user, message: 'User fetched successfully'})
         }
         return res.status(NotFound).json({message: "User not found"})
     }
@@ -49,10 +49,10 @@ export class UserService{
 
          if(user) {
          return res.json({
-           message: "account created successfully",
+           message: "Account updated successfully",
          user
         })
-     }
+         }
         return res.status(NotFound).json({
             message: "User not found",
         })

@@ -10,5 +10,4 @@ router.get("/:id", route.fetchOne);
 router.delete("/:id", route.removeOne);
 router.put("/:id", route.updateOne);
 
-
 module.exports = router;

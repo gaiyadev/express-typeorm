@@ -1,4 +1,6 @@
-FROM node:16
+FROM node:16.13.1
+
+FROM postgres
 
 WORKDIR  /app
 

@@ -2,7 +2,7 @@ import {createConnection, Connection} from "typeorm";
 import {User} from "../user/entity/user.entity";
 
 const connection = async ()  => <Connection> await createConnection({
-    type: "postgres",
+    type: "mysql",
     host: process.env["DATABASE_HOST "],
     port: +process.env["DATABASE_HOST "],
     username: "postgres",
